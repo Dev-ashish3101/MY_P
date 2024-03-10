@@ -1,0 +1,21 @@
+--Visualizing the data in the table
+SELECT * from football ;
+
+
+--Removing Column Referee From Table Football
+ALTER TABLE Football 
+DROP COLUMN Referee;
+
+
+--Remove the letter 'E' in the League division column
+UPDATE Football 
+SET League_Division = REPLACE(League_Division,'E','');
+
+
+--Converting Dates into single number with conditions.
+UPDATE Football
+SET Date = CASE 
+WHEN CAST(SUBSTR(Date,4,2)AS INTEGER) <= 7 THEN CAST(SUBSTR(Date,9,2)AS INTEGER) - 11
+ELSE CAST(SUBSTR(Date,9,2)AS INTEGER) - 10
+END;
+
